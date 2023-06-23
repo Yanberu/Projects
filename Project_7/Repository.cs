@@ -37,7 +37,7 @@ namespace Project_7
         
         public void CreateFile()
         {
-            StreamWriter sw = new StreamWriter($@"{this.path}.txt");
+            using StreamWriter sw = new StreamWriter($@"{this.path}.txt");
         }
 
         
@@ -143,9 +143,10 @@ namespace Project_7
                 File.Create($@"{this.path}.txt").Close();
                 Console.WriteLine("Файл успешно создан ✓");
             }
-            else
+            else  
             {
                 id = File.ReadAllLines($@"{this.path}.txt").Length + 1;
+                
             }
 
             this.Resize(index >= this.workers.Length);
@@ -180,14 +181,15 @@ namespace Project_7
         public Worker[] GetWorkersBetweenTwoDates(DateTime dateFrom, DateTime dateTo)
         {
             Worker[] workers = new Worker[this.workers.Length];
+
             using (StreamReader sr = new StreamReader($@"{this.path}.txt"))
             {
-                Console.WriteLine($"{"Id",5}{"Дата и время",20}{"Ф.И.О",15} {"Возраст",15} {"Рост",15} {"Дата Рождения",15} {"Место",20}");
                 string line;
+                int index = 0;
                 while ((line = sr.ReadLine()) != null)
                 {
                     string[] record = line.Split('#');
-                    for (int i = 1; i < workers.Length - 1; i++)
+                    for (int i = 0; i < workers.Length - 1; i++)
                     {
                         workers[i].Id = uint.Parse(record[0]);
                         workers[i].RecordDate = DateTime.Parse(record[1]);
@@ -197,8 +199,9 @@ namespace Project_7
                         workers[i].Height = uint.Parse(record[5]);
                         workers[i].BirthPlace = record[6];
 
-                        if (dateFrom < workers[i].RecordDate && workers[i].RecordDate <= dateTo)
+                        if (workers[i].RecordDate >= dateFrom && workers[i].RecordDate <= dateTo)
                         {
+                            
                             Console.WriteLine($"{workers[i].Id,5}{workers[i].RecordDate,20} {workers[i].FullName,14} {workers[i].Age,15} {workers[i].Height,15} {workers[i].BirthDate,15} {workers[i].BirthPlace,20}");
                         }
                     }

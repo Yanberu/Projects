@@ -56,9 +56,9 @@ namespace Project_7
                         break;
                     case 6:
                         Console.Write("От какой даты фильтровать: ");
-                        DateTime dateFrom = DateTime.Parse(Console.ReadLine());
+                        DateTime dateFrom = Convert.ToDateTime(Console.ReadLine());
                         Console.Write("До какой даты фильтровать: ");
-                        DateTime dateTo = DateTime.Parse(Console.ReadLine());
+                        DateTime dateTo = Convert.ToDateTime(Console.ReadLine());
                         repository.GetWorkersBetweenTwoDates(dateFrom, dateTo);
                         break;
                     
