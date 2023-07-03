@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
 
         mc:Ignorable="d"
-        Title="Bank_A" MinHeight="600" MinWidth="1000" Loaded="Window_Loaded">
+        Title="Список клиентов банка" MinHeight="600" MinWidth="1000" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <Style x:Key="MainStyle">
             <Setter Property="Control.FontSize" Value="13"></Setter>

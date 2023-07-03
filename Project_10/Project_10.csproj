@@ -6,6 +6,14 @@
     <RootNamespace>Project_10</RootNamespace>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon>bank.ico</ApplicationIcon>
+    
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="bank.ico" />
+  </ItemGroup>
+
+  
 
 </Project>

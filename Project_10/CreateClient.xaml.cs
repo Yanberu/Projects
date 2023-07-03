@@ -22,6 +22,7 @@ namespace Project_10
         public CreateClient()
         {
             InitializeComponent();
+            TextBoxSurname.Focus();           
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
