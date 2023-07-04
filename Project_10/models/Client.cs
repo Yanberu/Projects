@@ -223,14 +223,24 @@ namespace Project_10.models
         #region Методы
         public static void Get(ref ObservableCollection<Client> clients)
         {
-            
-            var load = JsonSerializer.Deserialize<ObservableCollection<Client>>(
-                File.ReadAllText("./clients_db.json"));
-            clients.Clear();
-            
-            foreach (var item in load)
+            if (!File.Exists("./clients_db.json"))
             {
-                clients.Add(item);
+                string serialize = JsonSerializer.Serialize<ObservableCollection<Client>>(clients);
+                File.WriteAllText("./clients_db.json", serialize);
+                MessageBox.Show("Файл базы клиентов отсутствовал. \nСоздан новый файл ✓");
+
+            }
+            else
+            {
+                var load = JsonSerializer.Deserialize<ObservableCollection<Client>>(
+                File.ReadAllText("./clients_db.json"));
+
+                clients.Clear();
+
+                foreach (var item in load)
+                {
+                    clients.Add(item);
+                }
             }
         }
 
@@ -345,8 +355,10 @@ namespace Project_10.models
         /// <param name="clients">Список клиентов</param>
         private static void SaveChange(ObservableCollection<Client> clients)
         {
-            string serialize = JsonSerializer.Serialize<ObservableCollection<Client>>(clients);
-            File.WriteAllText("./clients_db.json", serialize);
+            
+                string serialize = JsonSerializer.Serialize<ObservableCollection<Client>>(clients);
+                File.WriteAllText("./clients_db.json", serialize);
+
         }
 
         /// <summary>
