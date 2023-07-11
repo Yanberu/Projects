@@ -1,0 +1,52 @@
+﻿<Page x:Class="Project_11.InitialWindow"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Project_11"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="InitialWindow">
+
+    <Grid Background="#FF2E2E2E">
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <WrapPanel>
+                <TextBlock 
+                    Padding="5"
+                    Foreground="LightGreen">
+                    Выберите должность:
+                </TextBlock>
+                <ComboBox 
+                x:Name="comboBox"
+                Margin="15 0 0 0"
+                >
+                    <ComboBoxItem IsSelected="True">Консультант</ComboBoxItem>
+                    <ComboBoxItem>Менеджер</ComboBoxItem>
+                </ComboBox>
+            </WrapPanel>
+            <Button
+                Margin="0 35 0 0" 
+                Width="100"
+                Height="30" Background="#FF1F1F1F">
+                <TextBlock
+                TextAlignment="Center"
+                HorizontalAlignment="Center" VerticalAlignment="Top">
+                <Hyperlink
+                    Click="Button_Click" 
+                    NavigateUri="MainPage.xaml" 
+                    Foreground="LightGreen" 
+                    TextDecorations="{x:Null}">
+                    Продолжить
+                </Hyperlink>
+                </TextBlock>
+            </Button>
+        </StackPanel>
+        <Image HorizontalAlignment="Center" Height="129" Margin="0,46,0,0" VerticalAlignment="Top" Width="126" Source="/bank.ico.png"/>
+    </Grid>
+</Page>

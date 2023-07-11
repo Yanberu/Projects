@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <RootNamespace>Project_11</RootNamespace>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+    <ApplicationIcon>bank.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="bank.ico.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="bank.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="bank.ico.png" />
+  </ItemGroup>
+
+</Project>
