@@ -46,7 +46,7 @@ namespace Project_11.models
             MessageBox.Show("У вас недостаточно прав для удаления");
         }
 
-        public override void AddClient(string Surname, string Name, string Pantronymic, string Phone, string Passport)
+        public override void AddClient(string Surname, string Name, string Pantronymic, string Phone, string Passport, string Department)
         {
             MessageBox.Show("У вас недостаточно прав для добавления");
         }

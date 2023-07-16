@@ -47,11 +47,11 @@ namespace Project_11.models
             MessageBox.Show($"Клиент {client.Name} {client.Surname} удалён успешно");
         }
 
-        public virtual void AddClient(string Surname, string Name, string Pantronymic, string Phone, string Passport)
+        public virtual void AddClient(string Surname, string Name, string Pantronymic, string Phone, string Passport, string Department)
         {
             if (!string.IsNullOrEmpty(Phone))
             {
-                Client.Add(ref clients, new Client(Surname, Name, Pantronymic, Phone, Passport), this);
+                Client.Add(ref clients, new Client(Surname, Name, Pantronymic, Phone, Passport, Department), this);
             }
             else
             {

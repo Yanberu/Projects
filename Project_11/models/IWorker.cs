@@ -39,6 +39,6 @@ namespace Project_11.models
         /// <param name="Pantronymic">Отчество</param>
         /// <param name="Phone">Телефон</param>
         /// <param name="Passport">Паспортные данные</param>
-        public void AddClient(string Surname, string Name, string Pantronymic, string Phone, string Passport);
+        public void AddClient(string Surname, string Name, string Pantronymic, string Phone, string Passport, string Department);
     }
 }

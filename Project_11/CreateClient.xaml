@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Project_11"
         mc:Ignorable="d"
-        Title="Создание клиента" Height="230" Width="313" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="Создание клиента" Height="252" Width="313" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <Style TargetType="TextBlock">
             <Setter Property="Margin" Value="5"></Setter>
@@ -26,20 +26,22 @@
             <RowDefinition Height="15*"></RowDefinition>
         </Grid.RowDefinitions>
 
-        <StackPanel Grid.Column="0" Margin="10">
+        <StackPanel Grid.Column="0" Margin="10,10,10,6">
             <TextBlock>Фамилия</TextBlock>
             <TextBlock>Имя</TextBlock>
             <TextBlock>Отчество</TextBlock>
             <TextBlock>Номер телефона</TextBlock>
             <TextBlock>Паспорт</TextBlock>
+            <TextBlock><Run Language="ru-ru" Text="Департамент"/></TextBlock>
         </StackPanel>
 
-        <StackPanel Grid.Column="1" Margin="10">
+        <StackPanel Grid.Column="1" Margin="10,10,10,6">
             <TextBox x:Name="TextBoxSurname"></TextBox>
             <TextBox x:Name="TextBoxName"></TextBox>
             <TextBox x:Name="TextBoxPatronymic"></TextBox>
             <TextBox x:Name="TextBoxPhone"></TextBox>
             <TextBox x:Name="TextBoxPassport"></TextBox>
+            <TextBox x:Name="TextBoxDepartment"/>
         </StackPanel>
 
         <Button

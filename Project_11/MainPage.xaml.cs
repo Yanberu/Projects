@@ -3,18 +3,8 @@ using Project_11.models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Project_11
 {
@@ -25,6 +15,7 @@ namespace Project_11
     {
         public ObservableCollection<Client> clients = new ObservableCollection<Client>();
         private ObservableCollection<Client> _clients = new ObservableCollection<Client>();
+        ObservableCollection<string> list = new ObservableCollection<string>();
         public static Worker worker;
         CreateClient taskWindow;
 
@@ -34,10 +25,24 @@ namespace Project_11
         }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            
             comboBox.SelectedIndex = InitialWindow.ComboBoxIndex;
             worker = new Worker(ref clients);
             GetClients();
             dataGrid.ItemsSource = _clients;
+            
+            foreach (Client client in worker.GetClients())
+            {
+                if (list.Contains(client.Department))
+                {
+
+                }
+                else
+                { 
+                    list.Add(client.Department); 
+                }
+            }
+            comboBox_Copy.ItemsSource = list;
         }
 
         private void GetClients()
@@ -51,10 +56,28 @@ namespace Project_11
                 worker = new Manager(ref clients);
             }
             _clients.Clear();
+            string t = (string)comboBox_Copy.SelectedValue;
             foreach (Client client in worker.GetClients())
             {
-                _clients.Add(client);
+                if (t == client.Department)
+                {
+                    _clients.Add(client);
+                    
+                    
+                }
             }
+            foreach (Client client in worker.GetClients())
+            {
+                if (list.Contains(client.Department))
+                {
+
+                }
+                else
+                {
+                    list.Add(client.Department);
+                }
+            }
+            comboBox_Copy.ItemsSource = list;
         }
 
         public void comboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -63,6 +86,16 @@ namespace Project_11
             {
                 GetClients();
             }
+        }
+        public void comboBox_SelectionChanged2(object sender, SelectionChangedEventArgs e)
+        {
+            if ((((ComboBox)sender).SelectedItem) != null)
+            {
+                
+                GetClients();
+                
+            }    
+
         }
 
         private void dataGrid_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
@@ -80,7 +113,9 @@ namespace Project_11
             {
                 taskWindow = new CreateClient();
                 taskWindow.ShowDialog();
+                
                 GetClients();
+                
             }
             else
             {

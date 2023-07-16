@@ -22,7 +22,7 @@
             <Setter Property="Background" Value="#FF383838" />
         </Style>
     </Page.Resources>
-    
+
     <Grid Background="#FF2E2E2E">
         <Grid.RowDefinitions>
             <RowDefinition Height="30"></RowDefinition>
@@ -107,6 +107,19 @@
                 <DataGridTextColumn Header="Редактор" Binding="{Binding Changed, Mode=TwoWay}"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
+        <ComboBox 
+            x:Name="comboBox_Copy"
+            Grid.Row="0"
+            Grid.Column="2"
+            Margin="368,2,107,2" SelectionChanged="comboBox_SelectionChanged2">
+            
+        </ComboBox>
+        <Label 
+            Grid.Row="0" 
+            Grid.Column="2" 
+            Style="{StaticResource MainStyle}"
+            HorizontalAlignment="Left"
+            Content="Департамент:" Margin="272,-1,0,1" Width="91"/>
 
     </Grid>
 </Page>

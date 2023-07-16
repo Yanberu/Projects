@@ -22,6 +22,7 @@ namespace Project_11
         public CreateClient()
         {
             InitializeComponent();
+            
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -30,7 +31,8 @@ namespace Project_11
                 !string.IsNullOrEmpty(TextBoxName.Text) &&
                 !string.IsNullOrEmpty(TextBoxPatronymic.Text) &&
                 !string.IsNullOrEmpty(TextBoxPhone.Text) &&
-                !string.IsNullOrEmpty(TextBoxPassport.Text))
+                !string.IsNullOrEmpty(TextBoxPassport.Text) &&
+                !string.IsNullOrEmpty(TextBoxDepartment.Text))
             {
                 MainPage.worker.AddClient
                 (
@@ -38,7 +40,8 @@ namespace Project_11
                     TextBoxName.Text,
                     TextBoxPatronymic.Text,
                     TextBoxPhone.Text,
-                    TextBoxPassport.Text
+                    TextBoxPassport.Text,
+                    TextBoxDepartment.Text
                 );
                 this.Close();
             }

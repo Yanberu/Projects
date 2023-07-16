@@ -121,6 +121,25 @@ namespace Project_11.models
         /// <summary>
         /// Дата изменения анкеты
         /// </summary>
+        private string department;
+
+        public string Department
+        {
+            get
+            {
+                return department;
+            }
+            set
+            {
+                if (department != value)
+                {
+                    department = value;
+                    RaisePropertyChanged("Department");
+                }
+            }
+        }
+
+
         public DateTime? ChangeDate
         {
             get
@@ -194,16 +213,21 @@ namespace Project_11.models
             }
         }
         private string? changed;
+
+        
         #endregion
 
         #region Конструкторы
-        public Client(string Surname, string Name, string Patronymic, string Phone, string Passport)
+        public Client(string Surname, string Name, string Patronymic, string Phone, string Passport, string Department)
         {
             this.Surname = Surname;
             this.Name = Name;
             this.Patronymic = Patronymic;
             this.Phone = Phone;
             this.Passport = Passport;
+            this.Department = Department;
+            
+
         }
 
         //public Client(string Surname, string Name, string Patronymic, string Phone, string Passport,
@@ -224,17 +248,18 @@ namespace Project_11.models
         #region Методы
         public static void Get(ref ObservableCollection<Client> clients)
         {
-            if (!File.Exists("./clients_db.json"))
+            if (!File.Exists("./clients_db1.json"))
             {
                 string serialize = JsonSerializer.Serialize(clients);
-                File.WriteAllText("./clients_db.json", serialize);
+                File.WriteAllText("./clients_db1.json", serialize);
+                
                 MessageBox.Show("Файл базы клиентов отсутствовал. \nСоздан новый файл ✓");
 
             }
             else
             {
                 var load = JsonSerializer.Deserialize<ObservableCollection<Client>>(
-                File.ReadAllText("./clients_db.json"));
+                File.ReadAllText("./clients_db1.json"));
 
                 clients.Clear();
 
@@ -261,12 +286,14 @@ namespace Project_11.models
                     c.Name,
                     c.Patronymic,
                     c.Phone,
-                    c.Passport);
+                    c.Passport,
+                    c.Department);
                 temp_cl.changeDate = c.ChangeDate;
                 temp_cl.changeData = c.ChangeData;
                 temp_cl.Action = c.Action;
                 temp_cl.Changed = c.Changed;
                 temp_cl.Passport = "******************";
+                temp_cl.Department = c.Department;
                 _clients.Add(temp_cl);
             }
             //clients.ToList().ForEach(x => x.Phone = "******************");
@@ -358,7 +385,7 @@ namespace Project_11.models
         private static void SaveChange(ObservableCollection<Client> clients)
         {
             string serialize = JsonSerializer.Serialize(clients);
-            File.WriteAllText("./clients_db.json", serialize);
+            File.WriteAllText("./clients_db1.json", serialize);
         }
 
         /// <summary>
