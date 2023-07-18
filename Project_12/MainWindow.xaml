@@ -1,0 +1,99 @@
+﻿<Page x:Class="Project_12.MainWindow"
+        ShowsNavigationUI="False"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Project_12"
+        mc:Ignorable="d"
+        WindowTitle="Банковская система" MinHeight="400" MinWidth="600" FontFamily="Times New Roman" FontSize="14">
+    <Page.Resources>
+        <Style x:Key="MainStyle">
+            <Setter Property="Control.FontSize" Value="13"></Setter>
+            <Setter Property="Control.Background" Value="#FF383838" />
+            <Setter Property="Control.Foreground" Value="LightGreen" />
+        </Style>
+        <Style TargetType="{x:Type DataGridColumnHeader}">
+            <Setter Property="Background" Value="#FF383838" />
+        </Style>
+        <Style TargetType="{x:Type DataGridCell}">
+            <Setter Property="Background" Value="#FF383838" />
+        </Style>
+    </Page.Resources>
+    <Grid Background="#FF2E2E2E">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Menu Style="{StaticResource MainStyle}" Grid.ColumnSpan="2" Padding="8">
+            <MenuItem Header="Клиент">
+                <MenuItem Style="{StaticResource MainStyle}" Click="MenuAddClient" Header="Добавить"></MenuItem>
+                <MenuItem Style="{StaticResource MainStyle}" Click="MenuRemoveClient" Header="Удалить"></MenuItem>
+            </MenuItem>
+            <MenuItem Header="Счёт">
+                <MenuItem Style="{StaticResource MainStyle}" Click="MenuAddAccount" Header="Добавить счёт"></MenuItem>
+                <MenuItem Style="{StaticResource MainStyle}" Click="MenuRemoveAccount" Header="Удалить счёт"></MenuItem>
+                <MenuItem Style="{StaticResource MainStyle}" Click="MenuReplenishBalance" Header="Пополнение"></MenuItem>
+            </MenuItem>
+            <MenuItem Click="MenuTransfer" Header="Перевод"></MenuItem>
+        </Menu>
+        <Button Grid.Column="1" HorizontalAlignment="Right" Margin="0 0 10 0" Width="24" Height="24" Content="?" Click="Button_Click">
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Grid>
+                        <Ellipse x:Name="test" Fill="#FF7B7B7B"/>
+                        <Label Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="Black" Foreground="#FF56FF54"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="test" Property="Fill" Value="#FFDDA2B6"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+        <TabControl Grid.Row="1" Style="{StaticResource MainStyle}">
+            <TabItem Style="{StaticResource MainStyle}" Header="Клиенты банка" Margin="-2,-2,2,0" Cursor="AppStarting" Foreground="#FF00EB00">
+                <DataGrid Style="{StaticResource MainStyle}" Background="#FF2E2E2E"
+                    x:Name="dgClients" 
+                    AutoGenerateColumns="False"
+                    CanUserAddRows="False"
+                    HeadersVisibility="Column"
+                    SelectionMode="Single" CellEditEnding="dgClients_CellEditEnding" SelectionChanged="dgClients_SelectionChanged">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Width="40*" Header="Ф.И.О." Binding="{Binding FullName}"></DataGridTextColumn>
+                        <DataGridTextColumn IsReadOnly="True" Width="30*" Header="ИНН" Binding="{Binding INN}"></DataGridTextColumn>
+                        <DataGridTextColumn Width="30*" Header="Номер телефона" Binding="{Binding Phone}"></DataGridTextColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+        </TabControl>
+
+        <TabControl Style="{StaticResource MainStyle}" Grid.Row="1" Grid.Column="1" IsSynchronizedWithCurrentItem="False" Foreground="#FF5DDC5D">
+            <TabItem Style="{StaticResource MainStyle}" Header="Счета клиента" Foreground="#FF00EB00">
+                <DataGrid Style="{StaticResource MainStyle}" Background="#FF2E2E2E"
+                    IsReadOnly="True"
+                    x:Name="dgAccounts" 
+                    AutoGenerateColumns="False"
+                    CanUserAddRows="False"
+                    HeadersVisibility="Column"
+                    SelectionMode="Single" SelectionChanged="dgAccounts_SelectionChanged">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Номер счёта" Binding="{Binding Number}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Остаток" Binding="{Binding Balance}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Тип счёта" Binding="{Binding MyType}"></DataGridTextColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+        </TabControl>
+        <Image Height="32" Width="37" Source="/bank.ico.png" Margin="0,3,0,5" HorizontalAlignment="Left" Grid.Column="1">
+            <Image.OpacityMask>
+                <ImageBrush ImageSource="/bank.ico.png"/>
+            </Image.OpacityMask>
+        </Image>
+    </Grid>
+</Page>
