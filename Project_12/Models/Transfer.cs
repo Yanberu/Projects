@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace Project_12.Models
 {
@@ -19,8 +20,15 @@ namespace Project_12.Models
         /// <param name="sum">Сумма перевода</param>
         public void Post(Account acc_out, Account acc_in, decimal sum)
         {
-            acc_out.Balance = (decimal)acc_out.Balance - sum;
-            acc_in.Balance = (decimal)acc_in.Balance + sum;
+            if ((decimal)acc_out.Balance >= sum)
+            {
+                acc_out.Balance = (decimal)acc_out.Balance - sum;
+                acc_in.Balance = (decimal)acc_in.Balance + sum;
+            }
+            else
+            {
+                MessageBox.Show("Недостаточно средств для перевода!");
+            }
         }
     }
 }
