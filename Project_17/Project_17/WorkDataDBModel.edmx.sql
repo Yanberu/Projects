@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 08/07/2023 20:46:01
--- Generated from EDMX file: C:\Users\Ivan\Downloads\WorkwithData-master\WorkwithData-master\Работа с данными 2.0\WorkDataDBModel.edmx
+-- Date Created: 08/08/2023 00:27:13
+-- Generated from EDMX file: C:\Users\Ivan\Documents\GitHub\Projects\Project_17\Project_17\WorkDataDBModel.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -42,8 +42,8 @@ CREATE TABLE [dbo].[Sales] (
 );
 GO
 
--- Creating table 'users'
-CREATE TABLE [dbo].[users] (
+-- Creating table 'Users'
+CREATE TABLE [dbo].[Users] (
     [id] int  NOT NULL,
     [user_nickname] nvarchar(40)  NOT NULL,
     [user_password] nvarchar(40)  NOT NULL,
@@ -61,9 +61,9 @@ ADD CONSTRAINT [PK_Sales]
     PRIMARY KEY CLUSTERED ([id], [Email], [code_product] ASC);
 GO
 
--- Creating primary key on [id], [user_nickname], [user_password] in table 'users'
-ALTER TABLE [dbo].[users]
-ADD CONSTRAINT [PK_users]
+-- Creating primary key on [id], [user_nickname], [user_password] in table 'Users'
+ALTER TABLE [dbo].[Users]
+ADD CONSTRAINT [PK_Users]
     PRIMARY KEY CLUSTERED ([id], [user_nickname], [user_password] ASC);
 GO
 

@@ -35,7 +35,7 @@ namespace Project_17
             InitializeComponent();
             context = new ClientsEntities();
             context2 = new WorkDataDBEntities();
-            MessageBox.Show($"Приветствуем, {Environment.UserName}");            
+            MessageBox.Show($"Приветствуем, {Environment.UserName} ✓");            
             FirstCommand();
         }
 
@@ -111,8 +111,16 @@ namespace Project_17
         private void MenuItemDeleteClick(object sender, RoutedEventArgs e)
         {
             row = (Clients)gridView.SelectedItem; //выбранный клиент в данный момент (по которой был ПКМ)
-            context.Clients.Remove(row);
-            context.SaveChanges();
+            try
+            {
+                context.Clients.Remove(row);
+                context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"\nВыберите клиента для удаления", "Ошибка!");
+            }
+            
             
         }
 

@@ -33,20 +33,24 @@ namespace Project_17
         }
         public DetailsClient(Clients clientnow) : this()
         {
-            string email = clientnow.Email;
             try
             {
-                context.Sales.Load();
-                var msd = context.Sales.Where(w => w.Email == email);
-                gridView.DataContext = new ObservableCollection<Sales>(msd);
+                if (clientnow != null)
+                {
+                    string email = clientnow.Email;
+                    context.Sales.Load();
+                    var msd = context.Sales.Where(w => w.Email == email);
+                    gridView.DataContext = new ObservableCollection<Sales>(msd);
+                }
+                else
+                {
+                    MessageBox.Show($"\nВыберите клиента для просмотра его заказов", "Ошибка!");
+                }
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                MessageBox.Show(e.Message);
-                throw;
+                MessageBox.Show($"\n {ex}", "Ошибка!");
             }
-            
-            
         }
     }
 }

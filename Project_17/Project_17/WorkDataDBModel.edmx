@@ -4,34 +4,34 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="WorkDataDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="Sales">
-          <Key>
-            <PropertyRef Name="id" />
-            <PropertyRef Name="Email" />
-            <PropertyRef Name="code_product" />
-          </Key>
-          <Property Name="id" Type="int" Nullable="false" />
-          <Property Name="Email" Type="nvarchar" MaxLength="255" Nullable="false" />
-          <Property Name="code_product" Type="int" Nullable="false" />
-          <Property Name="description_product" Type="nvarchar" MaxLength="255" />
-        </EntityType>
-        <EntityType Name="users">
-          <Key>
-            <PropertyRef Name="id" />
-            <PropertyRef Name="user_nickname" />
-            <PropertyRef Name="user_password" />
-          </Key>
-          <Property Name="id" Type="int" Nullable="false" />
-          <Property Name="user_nickname" Type="nvarchar" MaxLength="40" Nullable="false" />
-          <Property Name="user_password" Type="nvarchar" MaxLength="40" Nullable="false" />
-          <Property Name="user_fullname" Type="nvarchar" MaxLength="40" />
-        </EntityType>
-        <EntityContainer Name="WorkDataDBModelStoreContainer">
-          <EntitySet Name="Sales" EntityType="Self.Sales" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
-        </EntityContainer>
-      </Schema></edmx:StorageModels>
+    <Schema Namespace="WorkDataDBModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="WorkDataDBModelStoreContainer">
+    <EntitySet Name="Sales" EntityType="WorkDataDBModel.Store.Sales" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Users" EntityType="WorkDataDBModel.Store.Users" store:Type="Tables" Schema="dbo" />
+  </EntityContainer>
+  <EntityType Name="Sales">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="Email" />
+      <PropertyRef Name="code_product" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="code_product" Type="int" Nullable="false" />
+    <Property Name="description_product" Type="nvarchar" Nullable="true" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="user_nickname" />
+      <PropertyRef Name="user_password" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="user_nickname" Type="nvarchar" Nullable="false" MaxLength="40" />
+    <Property Name="user_password" Type="nvarchar" Nullable="false" MaxLength="40" />
+    <Property Name="user_fullname" Type="nvarchar" Nullable="true" MaxLength="40" />
+  </EntityType>
+</Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="WorkDataDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -79,7 +79,7 @@
     </EntitySetMapping>
     <EntitySetMapping Name="Users">
       <EntityTypeMapping TypeName="IsTypeOf(WorkDataDBModel.Users)">
-        <MappingFragment StoreEntitySet="users">
+        <MappingFragment StoreEntitySet="Users">
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="user_nickname" ColumnName="user_nickname" />
           <ScalarProperty Name="user_password" ColumnName="user_password" />

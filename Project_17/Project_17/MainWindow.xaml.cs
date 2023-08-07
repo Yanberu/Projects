@@ -23,7 +23,7 @@ namespace Project_17
     /// </summary>
     public partial class MainWindow : Window
     {
-        //string name_user = string.Empty; //имя админа (не понадобилось)
+        
         WorkDataDBEntities context;
         public MainWindow()
         {
@@ -36,24 +36,30 @@ namespace Project_17
             try
             {
                 //поиск совпадений по введеному логину и паролю
-                var user = context.Users.Where(w => w.user_nickname == login_box.Text && w.user_password == login_box.Text);     
-                
-                if (user != null) //если совпадения есть
+                var userLogin = "Admin";
+                var userPassword = "123";
+
+                if (userLogin == login_box.Text && password_box.Password == userPassword) //если совпадения есть
                 {
                     //создание и открытие нового окна
                     DataInfo info = new DataInfo();
                     info.Show();
                     this.Close(); //после успешного входа, это окно уже не требуется
-                }                           
+                }
+                else
+                {
+                    MessageBox.Show("Неверно введены логин или пароль", "Ошибка");
+                }
             }
             catch (Exception a)
             {
                 MessageBox.Show(a.Message); //вывод об ошибке и возврат
                 return;
             }
-      
-
-
+        }
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Логин: Admin \nПароль: 123", "Краткое руководство");
         }
     }
 }
