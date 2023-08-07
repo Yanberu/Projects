@@ -1,0 +1,26 @@
+﻿<Window x:Class="Project_17.AddNewSale"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="Project_17"
+        mc:Ignorable="d"
+        Title="Добавление нового заказа" Height="378" Width="300">
+    <Grid Background="#FF2E2E2E">
+        <Button Background="#FF2E2E2E" Foreground="#FF00EB00" x:Name="addSale" Content="Добавить" HorizontalAlignment="Center" Margin="0,267,0,0" VerticalAlignment="Top" Width="148"/>
+        <TextBlock Background="#FF2E2E2E" Foreground="#FF00EB00" HorizontalAlignment="Left" Margin="14,26,0,0" TextWrapping="Wrap" 
+                   VerticalAlignment="Top" Width="102" FontSize="14"><Run Language="ru-ru" Text="Код товара"/><Run Text="*"/></TextBlock>
+        <TextBox Background="#FF2E2E2E" Foreground="#FF00EB00" x:Name="CodeProduct" HorizontalAlignment="Left" Margin="121,27,0,0" 
+                 TextWrapping="Wrap" VerticalAlignment="Top" Width="169" FontSize="14"/>
+        <TextBlock Background="#FF2E2E2E" Foreground="#FF00EB00" HorizontalAlignment="Left" Margin="14,57,0,0" TextWrapping="Wrap" 
+                   VerticalAlignment="Top" Width="102" FontSize="14"><Run Language="ru-ru" Text="Наименование товара"/><Run Text="*"/></TextBlock>
+        <TextBox Background="#FF2E2E2E" Foreground="#FF00EB00" x:Name="NameProduct" HorizontalAlignment="Left" Margin="121,65,0,0" 
+                 TextWrapping="Wrap" VerticalAlignment="Top" Width="169" FontSize="14"/>
+        <TextBlock HorizontalAlignment="Center" Margin="0,311,0,0" TextWrapping="Wrap" Text="поля со * - звездочкой  - обязательны для заполнения" VerticalAlignment="Top" IsEnabled="False" FontSize="10" Foreground="Red"/>
+        <TextBlock Background="#FF2E2E2E" Foreground="#FF00EB00" HorizontalAlignment="Left" Margin="14,105,0,0" TextWrapping="Wrap" 
+            VerticalAlignment="Top" Width="102" FontSize="14" Text="Email*" RenderTransformOrigin="0.49,0.566"/>
+        <TextBox Background="#FF2E2E2E" Foreground="#FF00EB00" x:Name="Email" HorizontalAlignment="Left" Margin="121,103,0,0" 
+            TextWrapping="Wrap" VerticalAlignment="Top" Width="169" FontSize="14"/>
+
+    </Grid>
+</Window>

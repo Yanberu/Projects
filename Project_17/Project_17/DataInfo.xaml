@@ -1,0 +1,83 @@
+﻿<Window Background="#FF2E2E2E" Foreground="#FF00EB00" x:Class="Project_17.DataInfo"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Project_17"
+        mc:Ignorable="d"
+        Title="Клиенты магазина" Height="450" Width="800">
+    <Window.Resources>
+        <Style x:Key="MainStyle">
+            <Setter Property="Control.FontSize" Value="13"></Setter>
+            <Setter Property="Control.Background" Value="#FF383838" />
+            <Setter Property="Control.Foreground" Value="LightGreen" />
+        </Style>
+        <Style TargetType="{x:Type DataGridColumnHeader}">
+            <Setter Property="Background" Value="#FF383838" />
+        </Style>
+        <Style TargetType="{x:Type DataGridCell}">
+            <Setter Property="Background" Value="#FF383838" />
+        </Style>
+    </Window.Resources>
+    <Grid Background="#FF2E2E2E">
+        <DataGrid
+            Background="#FF2E2E2E" Foreground="#FF00EB00"
+            x:Name="gridView"
+            ItemsSource="{Binding}"
+            AutoGenerateColumns="False" 
+            IsReadOnly="False" 
+            CurrentCellChanged="GVCurrentCellChanged"
+            CellEditEnding ="GVCellEditEnding"
+            
+            >
+            <DataGrid.Columns>
+                <DataGridTextColumn 
+                    x:Name="id" 
+                    Binding="{Binding id}" 
+                    Header="Id" 
+                    IsReadOnly="True"
+                    />
+                <DataGridTextColumn
+                    x:Name="name" 
+                    Binding="{Binding name}" 
+                    Header="Имя" 
+                    IsReadOnly="False"
+                    />
+                <DataGridTextColumn
+                    x:Name="lastname" 
+                    Binding="{Binding lastname}" 
+                    Header="Фамилия" 
+                    IsReadOnly="False"
+                    />
+                <DataGridTextColumn
+                    x:Name="middlename" 
+                    Binding="{Binding middlename}" 
+                    Header="Отчество" 
+                    IsReadOnly="False"
+                    />
+                <DataGridTextColumn
+                    x:Name="phone_number" 
+                    Binding="{Binding phonenumber}" 
+                    Header="Номер телефона" 
+                    IsReadOnly="False"
+                    />
+                <DataGridTextColumn
+                    x:Name="email" 
+                    Binding="{Binding Email}" 
+                    Header="Email" 
+                    IsReadOnly="True"
+                    />
+
+
+            </DataGrid.Columns>
+            <DataGrid.ContextMenu>
+                <ContextMenu Background="#FF2E2E2E" Foreground="#FF00EB00">
+                    <MenuItem Header="Добавить клиента" Click="MenuItemAddClick"/>
+                    <MenuItem Header="Посмотреть покупки" Click="MenuItemShowSalesClick"  />
+                    <MenuItem Header="Удалить" Click="MenuItemDeleteClick"/>
+                    <MenuItem Header="Добавить заказ" Click="MenuItemAddSaleClick"/>
+                </ContextMenu>
+            </DataGrid.ContextMenu>
+        </DataGrid>
+    </Grid>
+</Window>
