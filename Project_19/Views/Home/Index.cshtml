@@ -1,0 +1,11 @@
+﻿@{
+    ViewData["Title"] = "Persons List";
+}
+@model IEnumerable<Person>
+
+@foreach (var person in Model)
+{
+    var result = new Dictionary<string, string> { { "id", person.ID.ToString()} }; 
+<a class="nav-link text-dark" asp-all-route-data="result" asp-controller="Home" asp-action="Privacy" >
+    ID: @person.ID.ToString() @person.FirstName @person.LastName</a>
+}

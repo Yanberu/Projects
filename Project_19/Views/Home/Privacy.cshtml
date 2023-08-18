@@ -1,0 +1,10 @@
+﻿@model Project_19.Models.Person
+@{
+    ViewData["Title"] = $"{Model.FirstName} {Model.LastName}";
+}
+<h1>@ViewData["Title"]</h1>
+
+<p>Telephone number: @Model.Telephone</p>
+<p>Age: @Model.Age</p>
+<p>Adress: @Model.Adress</p>
+<p>Description: @Model.Description</p>
