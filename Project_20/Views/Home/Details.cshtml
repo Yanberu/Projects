@@ -1,0 +1,26 @@
+﻿@model Contact
+@{
+    ViewData["Title"] = Model.FirstName;
+}
+<body>
+    <h2>
+
+        <label asp-for="LastName">@Model.LastName</label>
+
+        <label asp-for="FirstName">@Model.FirstName</label>
+
+        <label asp-for="FatherName">@Model.FatherName</label>
+
+    </h2>
+    <img src = "~/Avatars/default_avatar.png" width="150"/>
+    <hr />
+    <p>ID: @Model.Id</p>
+    <p>ФИО: @Model.LastName @Model.FirstName @Model.FatherName</p>
+    <p>
+        <label> Тел.: </label>  
+        <label style="color:blue"> @Model.Telephone </label>
+    </p>
+    <p>Адрес: @Model.Adress</p>
+    <p>Почта: @Model.Mail</p>
+    <p>Описание: @Model.Description</p>
+</body>

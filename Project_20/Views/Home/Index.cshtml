@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Project_20.Models.Contact>
+
+@{
+    ViewData["Title"] = "Список контактов";
+}
+
+<h1>Список контактов</h1>
+<hr />
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Фамилия</th>
+            <th>Имя</th>
+            <th>Отчество</th>
+            <th>Почта</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model) {
+        <tr>
+            <td>@item.LastName</td>
+            <td>@item.FirstName</td>
+            <td>@item.FatherName</td>
+            <td>@item.Mail</td>
+
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Редактировать</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Просмотреть</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Удалить</a>
+            </td>
+        </tr>
+}
+
+    </tbody>
+</table>
+<p>
+    <a asp-action="Create">Добавить новый контакт</a>
+</p>

@@ -1,0 +1,24 @@
+﻿@model IEnumerable<Contact>
+<body>
+    <table>
+        <tr style="font-size:20px">
+            <th>Имя</th>
+            <th>Фамилия</th>
+            <th>Отчество</th>
+            <th>тел.</th>
+            <th>e-mail</th>
+            <th>адрес</th>
+        </tr>
+        @foreach (var contact in Model)
+        {
+            <tr style="font-size:14px">
+                <th>@contact.FirstName</th>
+                <th>@contact.LastName</th>
+                <th>@contact.FatherName</th>
+                <th>@contact.Telephone</th>
+                <th>@contact.Mail</th>
+                <th>@contact.Adress</th>
+            </tr>
+        }
+    </table>
+</body>

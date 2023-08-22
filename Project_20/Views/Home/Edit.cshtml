@@ -1,0 +1,23 @@
+﻿@model Contact
+<body>
+    <h1>Редактирование</h1>
+    <hr />
+    <form action="~/Home/EditContact" method="post">
+        <label>Фамилия</label><br />
+        <input type="text" name="LastName" value="@Model.LastName" /><br />
+        <label>Имя</label><br />
+        <input type="text" name="FirstName" value="@Model.FirstName" /><br />
+        <label>Отчество</label><br />
+        <input type="text" name="FatherName" value="@Model.FatherName" /><br />
+        <label>e-mail</label><br />
+        <input type="text" name="Mail" value="@Model.Mail" /><br />
+        <label>Телефон</label><br />
+        <input type="text" name="Telephone" value="@Model.Telephone" /><br />
+        <label>Адрес</label><br />
+        <input type="text" name="Adress" value="@Model.Adress" /><br />
+        <label>Описание</label><br />
+        <input type="text" name="Description" value="@Model.Description" /><br />
+        <input type="hidden" name="Id" value="@Model.Id" />
+        <p><input type="submit" value="Изменить" /></p>
+    </form>
+</body>
